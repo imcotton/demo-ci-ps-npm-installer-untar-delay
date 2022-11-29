@@ -1,0 +1,5 @@
+{
+    "overrides": {
+        "purescript-installer": "github:imcotton/npm-installer#untar-pipe-racing-delay"
+    }
+}
