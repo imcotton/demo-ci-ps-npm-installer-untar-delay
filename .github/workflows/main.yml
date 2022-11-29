@@ -1,0 +1,33 @@
+name: build
+
+on: push
+
+permissions:
+  contents: read
+
+jobs:
+
+  test:
+
+    runs-on: ubuntu-20.04
+
+    strategy:
+
+      matrix:
+
+        node:
+          - 14
+          - 16
+          - 18
+
+        purs:
+          - 0.14.9
+          - 0.15.6
+
+    steps:
+
+      - uses: actions/checkout@v3
+
+      - name: Node.js v${{ matrix.node }} - PureScript v${{ matrix.purs }}
+        run: docker build --build-arg NV=${{ matrix.node }} --build-arg PV=${{ matrix.purs }} --progress=plain .
+
